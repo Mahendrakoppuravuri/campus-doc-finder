@@ -123,9 +123,14 @@ export function useDoctorsFilter() {
 
   // Get unique specialties from all doctors
   const allSpecialties = useMemo(() => {
+    if (!doctors || doctors.length === 0) return [];
+    
     const specialtySet = new Set<string>();
     doctors.forEach(doctor => {
-      doctor.specialty.forEach(s => specialtySet.add(s));
+      // Check if doctor.specialty exists before calling forEach
+      if (doctor.specialty && Array.isArray(doctor.specialty)) {
+        doctor.specialty.forEach(s => specialtySet.add(s));
+      }
     });
     return Array.from(specialtySet).sort();
   }, [doctors]);

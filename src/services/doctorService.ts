@@ -12,7 +12,22 @@ export const fetchDoctors = async (): Promise<Doctor[]> => {
     }
     
     const data = await response.json();
-    return data;
+    
+    // Transform the API data to match our Doctor interface
+    const transformedData: Doctor[] = data.map((doctor: any) => ({
+      id: Number(doctor.id),
+      name: doctor.name || "",
+      specialty: doctor.specialities?.map((s: any) => s.name) || [],
+      experience: parseInt(doctor.experience) || 0,
+      fees: parseInt(doctor.fees?.replace(/[^\d]/g, "")) || 0,
+      videoConsult: Boolean(doctor.video_consult),
+      inClinic: Boolean(doctor.in_clinic),
+      image: doctor.photo || "",
+      expertise: doctor.doctor_introduction || undefined,
+      rating: undefined
+    }));
+    
+    return transformedData;
   } catch (error) {
     console.error("Failed to fetch doctors:", error);
     throw error;
