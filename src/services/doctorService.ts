@@ -1,4 +1,3 @@
-
 import { Doctor } from "../types/doctor";
 
 const API_URL = "https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json";
@@ -28,7 +27,8 @@ export const fetchDoctors = async (): Promise<Doctor[]> => {
       hospitalName: doctor.clinic?.name || undefined,
       location: doctor.clinic?.address?.locality 
         ? `${doctor.clinic.address.locality}, ${doctor.clinic.address.city || ""}`
-        : undefined
+        : undefined,
+      qualifications: doctor.qualifications?.map((q: any) => q.name) || []
     }));
     
     return transformedData;

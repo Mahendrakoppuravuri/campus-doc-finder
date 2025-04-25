@@ -38,6 +38,12 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
           {doctor.specialty.join(", ")}
         </div>
         
+        {doctor.qualifications && doctor.qualifications.length > 0 && (
+          <div className="text-sm text-gray-600 mt-1">
+            <span className="font-medium">Qualifications:</span> {doctor.qualifications.join(", ")}
+          </div>
+        )}
+        
         {doctor.hospitalName && (
           <div className="text-sm text-gray-600 mt-1">
             <span className="font-medium">Hospital:</span> {doctor.hospitalName}

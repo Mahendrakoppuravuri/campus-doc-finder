@@ -12,4 +12,5 @@ export interface Doctor {
   rating?: number;
   hospitalName?: string;
   location?: string;
+  qualifications?: string[]; // Added qualifications
 }
