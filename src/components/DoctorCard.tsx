@@ -14,7 +14,7 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
       <div className="flex-shrink-0">
         <img 
           src={doctor.image || "/placeholder.svg"} 
-          alt={`Dr. ${doctor.name}`} 
+          alt={`${doctor.name}`} 
           className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -28,7 +28,7 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
           data-testid="doctor-name" 
           className="text-lg font-semibold text-gray-800"
         >
-          Dr. {doctor.name}
+          {doctor.name}
         </h3>
         
         <div 
@@ -37,6 +37,18 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
         >
           {doctor.specialty.join(", ")}
         </div>
+        
+        {doctor.hospitalName && (
+          <div className="text-sm text-gray-600 mt-1">
+            <span className="font-medium">Hospital:</span> {doctor.hospitalName}
+          </div>
+        )}
+        
+        {doctor.location && (
+          <div className="text-sm text-gray-600 mt-1">
+            <span className="font-medium">Location:</span> {doctor.location}
+          </div>
+        )}
         
         <div className="mt-2 flex flex-wrap gap-2">
           {doctor.videoConsult && (

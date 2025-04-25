@@ -24,7 +24,11 @@ export const fetchDoctors = async (): Promise<Doctor[]> => {
       inClinic: Boolean(doctor.in_clinic),
       image: doctor.photo || "",
       expertise: doctor.doctor_introduction || undefined,
-      rating: undefined
+      rating: undefined,
+      hospitalName: doctor.clinic?.name || undefined,
+      location: doctor.clinic?.address?.locality 
+        ? `${doctor.clinic.address.locality}, ${doctor.clinic.address.city || ""}`
+        : undefined
     }));
     
     return transformedData;

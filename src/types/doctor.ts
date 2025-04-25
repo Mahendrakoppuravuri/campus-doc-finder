@@ -10,4 +10,6 @@ export interface Doctor {
   image: string;
   expertise?: string;
   rating?: number;
+  hospitalName?: string;
+  location?: string;
 }
