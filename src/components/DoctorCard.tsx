@@ -1,4 +1,3 @@
-
 import { Doctor } from "@/types/doctor";
 import { Button } from "@/components/ui/button";
 
@@ -38,12 +37,6 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
         >
           {doctor.specialty.join(", ")}
         </div>
-        
-        {doctor.expertise && (
-          <div className="text-sm text-gray-600 mt-1">
-            <span className="font-medium">Expertise:</span> {doctor.expertise}
-          </div>
-        )}
         
         {doctor.qualifications && doctor.qualifications.length > 0 && (
           <div className="text-sm text-gray-600 mt-1">
