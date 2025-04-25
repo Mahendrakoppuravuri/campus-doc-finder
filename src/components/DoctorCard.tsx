@@ -1,5 +1,5 @@
-
 import { Doctor } from "@/types/doctor";
+import { Button } from "@/components/ui/button";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -63,20 +63,29 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
           )}
         </div>
         
-        <div className="mt-3 flex flex-col sm:flex-row sm:justify-between">
-          <div 
-            data-testid="doctor-experience" 
-            className="text-sm text-gray-700 mb-2 sm:mb-0"
-          >
-            <span className="font-medium">Experience:</span> {doctor.experience} years
+        <div className="mt-3 flex flex-col sm:flex-row sm:justify-between items-center">
+          <div className="flex-grow">
+            <div 
+              data-testid="doctor-experience" 
+              className="text-sm text-gray-700 mb-2 sm:mb-0"
+            >
+              <span className="font-medium">Experience:</span> {doctor.experience} years
+            </div>
+            
+            <div 
+              data-testid="doctor-fee" 
+              className="text-sm text-gray-700"
+            >
+              <span className="font-medium">Consultation Fee:</span> ₹{doctor.fees}
+            </div>
           </div>
           
-          <div 
-            data-testid="doctor-fee" 
-            className="text-sm text-gray-700"
+          <Button 
+            variant="default" 
+            className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white mt-2 sm:mt-0"
           >
-            <span className="font-medium">Consultation Fee:</span> ₹{doctor.fees}
-          </div>
+            Book an Appointment
+          </Button>
         </div>
       </div>
     </div>
